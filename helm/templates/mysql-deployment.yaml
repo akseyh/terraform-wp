@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mysql
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: mysecretpassword
+            - name: MYSQL_DATABASE
+              value: wpdb
+            - name: MYSQL_USER
+              value: akseyh
+            - name: MYSQL_PASSWORD
+              value: mysecretpassword
+          image: mysql:5.7
+          name: mysql
+          resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+status: {}

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: wordpress
+  name: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: wordpress
+    spec:
+      containers:
+        - image: wordpress:5.1.1-php7.3-apache
+          name: wordpress
+          resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+status: {}
